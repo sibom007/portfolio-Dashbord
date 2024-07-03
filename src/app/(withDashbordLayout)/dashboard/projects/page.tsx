@@ -8,6 +8,7 @@ import { FieldValues } from "react-hook-form";
 import { useState } from "react";
 import { CreateProjects } from "@/service/action";
 import { toast } from "sonner";
+import DSelectField from "@/shared/DSelectField/DSelectField";
 
 const ProjectsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -31,6 +32,11 @@ const ProjectsPage = () => {
           return {
             name: data.name,
             driscaption: data.driscaption,
+            type: data.type,
+            technologies: data.technologies,
+            githubClient: data.githubClient,
+            githubServer: data.githubServer,
+
             img: await res?.data?.display_url,
           };
         })
@@ -52,7 +58,7 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div className="flex w-full ml-24 pb-5  items-center justify-center">
+    <div className="flex w-full  pb-5  items-center justify-center">
       <div className=" w-8/12">
         <Box>
           <Typography
@@ -85,6 +91,31 @@ const ProjectsPage = () => {
                     name="driscaption"
                     fullWidth
                     label="Description"
+                  />
+                  <DInput
+                    type="text"
+                    name="technologies"
+                    fullWidth
+                    label="Technologies"
+                  />
+                  <DInput type="text" name="Live" fullWidth label="Live link" />
+                  <DInput
+                    type="text"
+                    name="githubClient"
+                    fullWidth
+                    label="Github Client"
+                  />
+                  <DInput
+                    type="text"
+                    name="githubServer"
+                    fullWidth
+                    label="Github Server"
+                  />
+                  <DSelectField
+                    items={["ALL", "FORENTEND", "BACKEND"]}
+                    name="type"
+                    fullWidth
+                    label="Type"
                   />
                   <input
                     className="border-2 p-2 w-full"
