@@ -36,7 +36,7 @@ const ProjectsPage = () => {
             technologies: data.technologies,
             githubClient: data.githubClient,
             githubServer: data.githubServer,
-
+            Live: data.Live,
             img: await res?.data?.display_url,
           };
         })
